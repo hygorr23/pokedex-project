@@ -1,0 +1,122 @@
+:root{
+    --grass: #77CC55;
+    --fire: #FF4422;
+    --water: #3399FF;
+    --electric: #FBC933;
+    --ground: #DDBB55;
+    --rock: #BBAA66;
+    --fairy: #EE99EE;
+    --poison: #AA5599;
+    --bug: #AABB22;
+    --dragon: #7766EE;
+    --psychic: #FF5599;
+    --flying: #8899FF;
+    --fighting: #BB5544;
+    --dark: #775544;
+    --steel: #AAAABB;
+    --ice: #66CCFF;
+    --ghost: #6666BB;
+    --normal: #AAAAAA;
+
+  }
+
+.grassBg {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.904) 50%, var(--grass)), url('../assets/fundo\ cards.jpg') ;
+    background-size: cover;
+    background-position: center;
+}
+
+.fireBg {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.904) 50%, var(--fire)), url('../assets/fundo\ cards.jpg') ;
+    background-size: cover;
+    background-position: center;
+}
+
+.waterBg {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.904) 50%, var(--water)), url('../assets/fundo\ cards.jpg') ;
+    background-size: cover;
+    background-position: center;
+}
+
+.electricBg {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.904) 50%, var(--electric)), url('../assets/fundo\ cards.jpg') ;
+    background-size: cover;
+    background-position: center;
+}
+
+.groundBg {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.904) 50%, var(--ground)), url('../assets/fundo\ cards.jpg') ;
+    background-size: cover;
+    background-position: center;
+}
+
+.rockBg {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.904) 50%, var(--rock)), url('../assets/fundo\ cards.jpg') ;
+    background-size: cover;
+    background-position: center;
+}
+
+.bugBg {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.904) 50%, var(--bug)), url('../assets/fundo\ cards.jpg') ;
+    background-size: cover;
+    background-position: center;
+}
+
+.darkBg {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.904) 50%, var(--dark)), url('../assets/fundo\ cards.jpg') ;
+    background-size: cover;
+    background-position: center;
+}
+
+.dragonBg {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.904) 50%, var(--dragon)), url('../assets/fundo\ cards.jpg') ;
+    background-size: cover;
+    background-position: center;
+}
+
+.fairyBg {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.904) 50%, var(--fairy)), url('../assets/fundo\ cards.jpg') ;
+    background-size: cover;
+    background-position: center;
+}
+
+.fightingBg {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.904) 50%, var(--fighting)), url('../assets/fundo\ cards.jpg') ;
+    background-size: cover;
+    background-position: center;
+}
+
+.flyingBg {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.904) 50%, var(--flying)), url('../assets/fundo\ cards.jpg') ;
+    background-size: cover;
+    background-position: center;
+}
+.ghostBg {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.904) 50%, var(--ghost)), url('../assets/fundo\ cards.jpg') ;
+    background-size: cover;
+    background-position: center;
+}
+.iceBg {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.904) 50%, var(--ice)), url('../assets/fundo\ cards.jpg') ;
+    background-size: cover;
+    background-position: center;
+}
+.poisonBg {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.904) 50%, var(--poison)), url('../assets/fundo\ cards.jpg') ;
+    background-size: cover;
+    background-position: center;
+}
+.steelBg {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.904) 50%, var(--steel)), url('../assets/fundo\ cards.jpg') ;
+    background-size: cover;
+    background-position: center;
+}
+.psychicBg {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.904) 50%, var(--psychic)), url('../assets/fundo\ cards.jpg') ;
+    background-size: cover;
+    background-position: center;
+}.normalBg {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.904) 50%, var(--normal)), url('../assets/fundo\ cards.jpg') ;
+    background-size: cover;
+    background-position: center;
+}

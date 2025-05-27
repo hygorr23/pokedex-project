@@ -120,3 +120,22 @@
     background-size: cover;
     background-position: center;
 }
+
+.grassBg:hover {   box-shadow: 0 0 15px var(--grass); }
+.fireBg:hover {   box-shadow: 0 0 15px var(--fire); }
+.waterBg:hover {   box-shadow: 0 0 15px var(--water); }
+.electricBg:hover {   box-shadow: 0 0 15px var(--electric); }
+.groundBg:hover {   box-shadow: 0 0 15px var(--ground); }
+.rockBg:hover {   box-shadow: 0 0 15px var(--rock); }
+.bugBg:hover {   box-shadow: 0 0 15px var(--bug); }
+.darkBg:hover {   box-shadow: 0 0 15px var(--dark); }
+.dragonBg:hover {   box-shadow: 0 0 15px var(--dragon); }
+.fairyBg:hover {   box-shadow: 0 0 15px var(--fairy); }
+.fightingBg:hover {   box-shadow: 0 0 15px var(--fighting); }
+.flyingBg:hover {   box-shadow: 0 0 15px var(--flying); }
+.ghostBg:hover {   box-shadow: 0 0 15px var(--ghost); }
+.iceBg:hover {   box-shadow: 0 0 15px var(--ice); }
+.poisonBg:hover {   box-shadow: 0 0 15px var(--poison); }
+.steelBg:hover {   box-shadow: 0 0 15px var(--steel); }
+.psychicBg:hover {   box-shadow: 0 0 15px var(--psychic); }
+.normalBg:hover {   box-shadow: 0 0 15px var(--normal); }

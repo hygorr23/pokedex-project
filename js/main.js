@@ -1,5 +1,5 @@
 
-const limit = 100;
+const limit = 20;
 const offset = 0;
 const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
 
@@ -26,7 +26,7 @@ function pokeHtml(pokemon){
                                 <p><i class="fa-solid fa-dumbbell"></i> peso</p>
                             </div>
                         </div>
-                        <button class="detailsButton"><i class="fa-solid fa-dumbbell"></i>more details</button>
+                        <button class="detailsButton"><i class="fa-solid fa-bolt"></i>more details</button>
 
                 </div>`
 }

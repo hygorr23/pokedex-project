@@ -1,3 +1,17 @@
-projeto basico para treinar o consumo de Api com javascript.
-o estilo do projeto foi inspirado em uma foto que vi no pinterest, 
-não sou muito fan de pokemon mas tive que fazer esse para entraga de uma atividade.
+# 📦 PokeDex Project
+
+Este é um projeto simples desenvolvido com **HTML**, **CSS** e **JavaScript**, com o objetivo de praticar o consumo de APIs REST utilizando `fetch`.
+
+## 🔍 Objetivo
+Consumir dados da [PokéAPI](https://pokeapi.co/) para exibir informações básicas sobre os Pokémon, como nome, imagem, tipos e status base (ex: HP), simulando uma Pokédex interativa.
+
+## 🎨 Estilo
+O design do projeto foi inspirado em uma referência visual encontrada no Pinterest, adaptado com um toque pessoal para fins didáticos.
+
+## 💡 Aprendizados
+- Manipulação do DOM com JavaScript puro
+- Requisições assíncronas com `fetch`, `async/await`
+- Organização de arquivos por responsabilidade (HTML/CSS/JS separados)
+- Manipulação e exibição de dados em JSON
+
+## 📁 Estrutura de pastas

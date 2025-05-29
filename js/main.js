@@ -1,7 +1,4 @@
 
-const limit = 20;
-const offset = 0;
-const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
 
 function pokeHtml(pokemon){
     return`<div class="cardPoke ${pokemon.typeMain.type.name+'Bg'}">
@@ -30,48 +27,29 @@ function pokeHtml(pokemon){
 
                 </div>`
 }
+const pokeCards = document.getElementById("cardList");
 
-
-
-fetch(url).then((response) => response.json())
-    .then((pokeList) => pokeList.results)
-    .then((pokeList) => {
-        pokeList.forEach(pokemons => {
-            fetch(pokemons.url)
-            .then((response) => response.json())
-            .then((pokeData) => {
-                const pokemon = new PokemonInfo();
-                pokemon.name = pokeData.name;
-                pokemon.order = pokeData.order;
-                pokemon.types = pokeData.types;
-                pokemon.typeMain = pokemon.types[0];
-                pokemon.description = pokeData.description;
-                pokemon.imageMove = pokeData.sprites.other.showdown.front_default;
-                pokemon.imageDefault = pokeData.sprites.front_default;
-                pokemon.imageBig = pokeData.sprites.other.dream_world.front_default;
-                pokemon.weight = pokeData.weight;
-                pokemon.height = pokeData.height;
-
-                console.log(pokemon);
-                const pokeCards = document.getElementById("cardList");
-                pokeCards.innerHTML += pokeHtml(pokemon);
-                console.log(pokeHtml(pokemon));
-            })
-        });
+const pokemonList = pokeApi.getPokemons()
+    .then(pokemons => pokeApi.getPokemonDetails(pokemons))
+    .then(details => {
+        console.log("Pokémons detalhados:", details);
+        pokeCards.innerHTML = details.map(pokemon => pokeHtml(pokemon)).join('');
     })
-    .catch((error) => console.error( error));
+    .catch(error => console.error("Erro ao buscar detalhes:", error));
 
+        
+        
     class PokemonInfo {
         name;
         order;
         types;
         typeMain;
-        description;
         imageMove;
         imageDefault;
         imageBig;
         weight;
         height;
+        stats;
     }
 
     

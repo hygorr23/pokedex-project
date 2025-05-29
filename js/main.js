@@ -32,7 +32,6 @@ const pokeCards = document.getElementById("cardList");
 const pokemonList = pokeApi.getPokemons()
     .then(pokemons => pokeApi.getPokemonDetails(pokemons))
     .then(details => {
-        console.log("Pokémons detalhados:", details);
         pokeCards.innerHTML = details.map(pokemon => pokeHtml(pokemon)).join('');
     })
     .catch(error => console.error("Erro ao buscar detalhes:", error));
@@ -52,4 +51,3 @@ const pokemonList = pokeApi.getPokemons()
         stats;
     }
 
-    

@@ -1,6 +1,6 @@
 const pokeApi = {};
 
-pokeApi.getPokemons = (offset = 0, limit = 50) => {
+pokeApi.getPokemons = (offset, limit) => {
     const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
     return fetch(url)
         .then(response => response.json())
@@ -14,6 +14,7 @@ pokeApi.getPokemonDetails = (pokemons) => {
             .then(details => {
                 const pokemonInfo = new PokemonInfo();
                 pokemonInfo.name = details.name;
+                pokemonInfo.id = details.id;
                 pokemonInfo.order = details.order;
                 pokemonInfo.types = details.types;
                 pokemonInfo.typeMain = details.types[0];
@@ -29,13 +30,4 @@ pokeApi.getPokemonDetails = (pokemons) => {
     return Promise.all(promises);
 }
 
-pokeApi.getPokemons()
-  .then(pokemonList => {
-    console.log("Lista básica:", pokemonList);
 
-    return pokeApi.getPokemonDetails(pokemonList);
-  })
-  .then(details => {
-    console.log("Detalhes completos:", details);
-  })
-  

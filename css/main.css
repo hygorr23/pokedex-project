@@ -322,8 +322,12 @@
   cursor: pointer;
 }
 .detailsButton:hover i{
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   color: rgb(255, 0, 0);
+}
+
+.detailsButton:hover{
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .loadMore {

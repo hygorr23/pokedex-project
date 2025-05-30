@@ -3,6 +3,7 @@ const limit = 20;
 const pokeCards = document.getElementById("cardList");
 const detailsContainer = document.getElementsByClassName('headerPokeDetail')[0];
 const buttonLoadMore = document.getElementById('loadMore');
+const cardPokeInfo = document.getElementsByClassName('cardPoke');
 
 function pokeCardHtml(pokemon){
     return`<div class="cardPoke ${pokemon.typeMain.type.name+'Bg'}">
@@ -59,41 +60,48 @@ function pokemonDetailsHtml(pokemon) {
                             </div>
                             <div class="status">
                                 <h3>Status</h3>
-                                <div class="statusItem">
-                                    <h4>HP</h4>
-                                    <p>69</p>
-                                    <div class="barra-hp">
-                                        <div class="preenchido" style="width: 50%;"></div>
+                                    <div class="statusItem">
+                                        <h4>Hp</h4>
+                                        <p>${pokemon.stats[0].base_stat}</p>
+                                        <div class="barra-hp">
+                                        <div class="preenchido" style="width: ${pokemon.stats[0].base_stat/1.3}%;"></div>
+                                        </div>
                                     </div>
-                                </div>
-                                 <div class="statusItem">
-                                    <h4>Atk.</h4>
-                                    <p>69</p>
-                                    <div class="barra-hp">
-                                        <div class="preenchido" style="width: 50%;"></div>
+                                    <div class="statusItem">
+                                        <h4>Atk.</h4>
+                                        <p>${pokemon.stats[1].base_stat}</p>
+                                        <div class="barra-hp">
+                                        <div class="preenchido" style="width: ${pokemon.stats[1].base_stat/1.3}%;"></div>
+                                        </div>
                                     </div>
-                                </div>
-                                 <div class="statusItem">
-                                    <h4>Def.</h4>
-                                    <p>69</p>
-                                    <div class="barra-hp">
-                                        <div class="preenchido" style="width: 50%;"></div>
+                                    <div class="statusItem">
+                                        <h4>Def.</h4>
+                                        <p>${pokemon.stats[2].base_stat}</p>
+                                        <div class="barra-hp">
+                                        <div class="preenchido" style="width: ${pokemon.stats[2].base_stat/1.3}%;"></div>
+                                        </div>
                                     </div>
-                                </div>
-                                 <div class="statusItem">
-                                    <h4>hp</h4>
-                                    <p>69</p>
-                                    <div class="barra-hp">
-                                        <div class="preenchido" style="width: 50%;"></div>
+                                    <div class="statusItem">
+                                       <h4>Sp.Atk</h4>
+                                        <p>${pokemon.stats[3].base_stat}</p>
+                                        <div class="barra-hp">
+                                        <div class="preenchido" style="width: ${pokemon.stats[3].base_stat/1.3}%;"></div>
+                                        </div>
                                     </div>
-                                </div>
-                                 <div class="statusItem">
-                                    <h4>hp</h4>
-                                    <p>69</p>
-                                    <div class="barra-hp">
-                                        <div class="preenchido" style="width: 50%;"></div>
+                                    <div class="statusItem">
+                                        <h4>Sp.Def</h4>
+                                        <p>${pokemon.stats[4].base_stat}</p>
+                                        <div class="barra-hp">
+                                        <div class="preenchido" style="width: ${pokemon.stats[4].base_stat/1.3}%;"></div>
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="statusItem">
+                                        <h4>Speed</h4>
+                                        <p>${pokemon.stats[5].base_stat}</p>
+                                        <div class="barra-hp">
+                                        <div class="preenchido" style="width: ${pokemon.stats[5].base_stat/1.3}%;"></div>
+                                        </div>
+                                    </div>
                             </div>
 
                         </div>
@@ -105,13 +113,20 @@ function loadPokemonCards(offset,limit) {
     .then(pokemons => pokeApi.getPokemonDetails(pokemons))
     .then(details => {
         pokeCards.innerHTML += details.map(pokemon => pokeCardHtml(pokemon)).join('');
-        showPokemonDetails(details[0]); // Exibe os detalhes do primeiro Pokémon inicialmente
+        selectPokemonInfo(details);     
+        console.log(details);  
     });
 }
 function showPokemonDetails(pokemon) {
-    
-
     detailsContainer.innerHTML = pokemonDetailsHtml(pokemon);
+};
+function selectPokemonInfo(pokemon){
+    document.querySelectorAll('.detailsButton').forEach((button, idx) => {
+            button.addEventListener('click', () => {
+                console.log(idx);
+                showPokemonDetails(pokemon[idx]);
+            });
+        });
 }
 loadPokemonCards(offset, limit);
 
@@ -119,3 +134,4 @@ buttonLoadMore.addEventListener('click', () => {
     offset += limit; 
     loadPokemonCards(offset, limit);
 });
+

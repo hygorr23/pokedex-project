@@ -26,19 +26,12 @@
   align-items: center;
   width: 100%;
   padding: 10px 0px;
-  background-color: var(--grass);
+  padding-bottom: 2rem;
+  background-image: linear-gradient(180deg, rgba(99, 97, 97, 0.904) 10%, var(--grass)), url('../assets/fundo\ cards.jpg') ;
+    background-size: cover;
+    background-position: center;
   clip-path: ellipse(120% 100% at 50% 0%);
-}
 
-.headerPokeDetail {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 0px;
-  background-color: var(--grass);
-  clip-path: ellipse(120% 100% at 50% 0%);
 }
 
 .logoPoke {
@@ -50,11 +43,11 @@
 }
 
 .pokeSelect {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
   justify-content: space-between;
   width: 100%;
-  height: 300px;
+  height: 100%;
 }
 
 .detailSelect {
@@ -62,29 +55,42 @@
   flex-direction: column;
   justify-content: start;
   align-items: start;
-  width: 350PX;
+  width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
   padding: 20px 10px 20px 30px;
   gap: 10px;
 }
+.detailSelect h2{
+  text-transform: capitalize;
+}
+.detailSelect p{
+  text-align: justify;
+}
 
 .moreInfo {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 300px;
+  width: 100%;
   height: 100%;
   padding: 20px;
   gap: 10px;
 }
 
-.moreInfo img {
+.imagePoke{
   width: 100%;
+  height: 300px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagePoke img {
+  width: 90%;
   height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
 }
 
 .information {
@@ -94,10 +100,51 @@
   align-items: start;
   width: 100%;
   height: auto;
+  gap: 5px;
 }
 .information p {
   font-size: 12px;
   font-weight: 400;
+}
+
+.information ol{
+    list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;   
+}
+
+.information ol li{
+  font-size: 13px;
+  border-radius: 10px;
+  padding: 1px 6px;
+  text-transform: capitalize;
+}
+
+.pokeInfoSelect{
+   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+.infoSelect{
+   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 30%;
+  height: auto;
+}
+
+.infoSelect p{
+  padding-left: 20px;
+  width: 100%;
 }
 
 .status {
@@ -135,15 +182,6 @@
   transition: width 0.3s ease; 
 }
 
-
-.headerPoke {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
 
 .containerPokeCards {
   display: flex;

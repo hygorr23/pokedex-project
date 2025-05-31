@@ -1,5 +1,6 @@
 let offset = 0;
 const limit = 20;
+let allPokemons = [];
 const pokeCards = document.getElementById("cardList");
 const detailsContainer = document.getElementsByClassName('headerPokeDetail')[0];
 const buttonLoadMore = document.getElementById('loadMore');
@@ -31,32 +32,36 @@ function pokeCardHtml(pokemon){
                                 <p><i class="fa-solid fa-dumbbell"></i> peso</p>
                             </div>
                         </div>
-                        <button class="detailsButton"><i class="fa-solid fa-bolt"></i>more details</button>
+                        <button class="detailsButton" data-id="${pokemon.id}"><i class="fa-solid fa-bolt"></i>more details</button>
 
                 </div>`
 }
 function pokemonDetailsHtml(pokemon) {
-    return `<div class="headerPoke">
-                    <div class="pokeSelect">
+    return `        <div class="pokeSelect">
                         <div class="detailSelect">
                             <h2>${pokemon.name}</h2>
                             <p>é um Pokémon elétrico, considerado o mais popular e reconhecível da franquia Pokémon. Ele é um roedor com bolsas nas bochechas, que armazena eletricidade, e tem um rabo em forma de raio. Pikachu é conhecido por seus ataques a distância com eletricidade, que às vezes podem paralisar o oponente. 
                             </p>
-                            </div>
-                        <img src="${pokemon.imageBig}" alt="">
+                        </div>
+                        <div class="imagePoke">
+                            <img src="${pokemon.imageBig}" alt="">
+                        </div>
                         <div class="moreInfo">
                             <div class="information">
                                 <h3>Informações</h3>
-                                <ol>
-                                ${pokemon.types.map(type => `<li class="${type.type.name}">${type.type.name}</li>`).join('')}
-                                </ol>
-                                <div class="">
-                                    <p><span>Altura:</span> 0.4 m</p>
-                                    <p><span>Peso:</span> 6.0 kg</p>
-                                    <div class="pokeClass">
-                           
+                                    <ol>
+                                        ${pokemon.types.map(type => `<li class="${type.type.name}">${type.type.name}</li>`).join('')}
+                                     </ol>
+                                <div class="pokeInfoSelect">
+                                    <div class="infoSelect">
+                                    <h4><i class="fa-solid fa-ruler"></i> Altura</h4>
+                                        <p>${pokemon.height} M</p>
                                     </div>
+                                    <div class="infoSelect">
+                                    <h4><i class="fa-solid fa-dumbbell"></i> Peso</h4>
+                                        <p>${pokemon.weight} KG</p>
                                 </div>
+                        </div>
                             </div>
                             <div class="status">
                                 <h3>Status</h3>
@@ -106,12 +111,13 @@ function pokemonDetailsHtml(pokemon) {
 
                         </div>
                     </div>
-                </div>`;
+                            `;
 }   
 function loadPokemonCards(offset,limit) {
     pokeApi.getPokemons(offset,limit)
     .then(pokemons => pokeApi.getPokemonDetails(pokemons))
     .then(details => {
+        allPokemons = allPokemons.concat(details); 
         pokeCards.innerHTML += details.map(pokemon => pokeCardHtml(pokemon)).join('');
         selectPokemonInfo(details);     
         console.log(details);  
@@ -120,14 +126,16 @@ function loadPokemonCards(offset,limit) {
 function showPokemonDetails(pokemon) {
     detailsContainer.innerHTML = pokemonDetailsHtml(pokemon);
 };
-function selectPokemonInfo(pokemon){
-    document.querySelectorAll('.detailsButton').forEach((button, idx) => {
-            button.addEventListener('click', () => {
-                console.log(idx);
-                showPokemonDetails(pokemon[idx]);
-            });
+function selectPokemonInfo() {
+    document.querySelectorAll('.detailsButton').forEach((button) => {
+        button.addEventListener('click', () => {
+            const pokeId = button.getAttribute('data-id');
+            const pokemon = allPokemons.find(p => p.id == pokeId);
+            showPokemonDetails(pokemon);
         });
+    });
 }
+
 loadPokemonCards(offset, limit);
 
 buttonLoadMore.addEventListener('click', () => {

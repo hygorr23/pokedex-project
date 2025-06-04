@@ -5,6 +5,8 @@ const pokeCards = document.getElementById("cardList");
 const detailsContainer = document.getElementsByClassName('headerPokeDetail')[0];
 const buttonLoadMore = document.getElementById('loadMore');
 const cardPokeInfo = document.getElementsByClassName('cardPoke');
+const buttonSearch = document.getElementById('buttonSearch');
+const inputSearch = document.getElementById('inputSearch');
 
 function pokeCardHtml(pokemon){
     return`<div class="cardPoke ${pokemon.typeMain.type.name+'Bg'}">
@@ -143,3 +145,28 @@ buttonLoadMore.addEventListener('click', () => {
     loadPokemonCards(offset, limit);
 });
 
+buttonSearch.addEventListener('click',() => {
+    fetch(`https://pokeapi.co/api/v2/pokemon/${inputSearch.value}`)
+        .then(response => response.json())
+        .then(details => { console.log(details);      
+                const pokemonInfo = new PokemonInfo();
+                pokemonInfo.name = details.name;
+                pokemonInfo.id = details.id;
+                pokemonInfo.order = details.order;
+                pokemonInfo.types = details.types;
+                pokemonInfo.typeMain = details.types[0];
+                pokemonInfo.stats = details.stats;
+                pokemonInfo.imageMove = details.sprites.versions['generation-v']['black-white'].animated.front_default;
+                pokemonInfo.imageDefault = details.sprites.front_default;
+                pokemonInfo.imageBig = details.sprites.other.dream_world.front_default;
+                pokemonInfo.weight = details.weight / 10; // Convert to kg
+                pokemonInfo.height = details.height / 10; // Convert to m
+
+                 allPokemons = [];
+                 allPokemons = allPokemons.concat(pokemonInfo); 
+                 pokeCards.innerHTML = pokeCardHtml(pokemonInfo);
+                 selectPokemonInfo(pokemonInfo);
+        
+               console.log(pokemonInfo);
+            })
+})

@@ -138,6 +138,12 @@ function selectPokemonInfo() {
             const pokemon = allPokemons.find(p => p.id == pokeId);
             console.log(pokemon);
             showPokemonDetails(pokemon);
+            // Remove todas as classes que terminam com 'BgColor'
+            headerDetail[0].classList.forEach(cls => {
+                if (cls.endsWith('BgColor')) {
+                    headerDetail[0].classList.remove(cls);
+                }
+            });
             headerDetail[0].classList.add(pokemon.typeMain.type.name+'BgColor');
         });
     });

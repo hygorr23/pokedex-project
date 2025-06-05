@@ -88,3 +88,8 @@
     background-size: cover;
     background-position: center;
 }
+.mainBgColor{
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.804) 10%, red), url('../assets/fundo3.jpg');
+    background-size: cover;
+    background-position: center;
+}

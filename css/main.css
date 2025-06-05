@@ -8,6 +8,7 @@
 }
 .container {
   background-color: rgb(2, 0, 24);
+  min-height: 100vh;
 }
 .container2 {
   display: flex;
@@ -27,11 +28,8 @@
   width: 100%;
   padding: 10px 0px;
   padding-bottom: 2rem;
-  background-image: linear-gradient(180deg, rgba(99, 97, 97, 0.904) 10%, var(--grass)), url('../assets/fundo\ cards.jpg') ;
-    background-size: cover;
-    background-position: center;
   clip-path: ellipse(120% 100% at 50% 0%);
-
+ 
 }
 
 .logoPoke {

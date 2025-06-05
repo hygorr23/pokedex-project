@@ -7,6 +7,7 @@ const buttonLoadMore = document.getElementById('loadMore');
 const cardPokeInfo = document.getElementsByClassName('cardPoke');
 const buttonSearch = document.getElementById('buttonSearch');
 const inputSearch = document.getElementById('inputSearch');
+const headerDetail = document.getElementsByClassName('headerDetails');
 
 function pokeCardHtml(pokemon){
     return`<div class="cardPoke ${pokemon.typeMain.type.name+'Bg'}">
@@ -125,43 +126,37 @@ function loadPokemonCards(offset,limit) {
         console.log(details);  
     });
 }
+
 function showPokemonDetails(pokemon) {
     detailsContainer.innerHTML = pokemonDetailsHtml(pokemon);
+
 };
 function selectPokemonInfo() {
     document.querySelectorAll('.detailsButton').forEach((button) => {
         button.addEventListener('click', () => {
             const pokeId = button.getAttribute('data-id');
             const pokemon = allPokemons.find(p => p.id == pokeId);
+            console.log(pokemon);
             showPokemonDetails(pokemon);
+            headerDetail[0].classList.add(pokemon.typeMain.type.name+'BgColor');
         });
     });
 }
-
 loadPokemonCards(offset, limit);
-
 buttonLoadMore.addEventListener('click', () => {
     offset += limit; 
     loadPokemonCards(offset, limit);
 });
-
 buttonSearch.addEventListener('click',() => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${inputSearch.value}`)
-        .then(response => response.json())
+    if(inputSearch.value.trim() === "") {
+        allPokemons = [];
+        pokeCards.innerHTML = [];
+        offset = 0;
+        loadPokemonCards(offset, limit);
+    }else{
+    pokeApi.getPokemonSearch(inputSearch.value)
         .then(details => { console.log(details);      
-                const pokemonInfo = new PokemonInfo();
-                pokemonInfo.name = details.name;
-                pokemonInfo.id = details.id;
-                pokemonInfo.order = details.order;
-                pokemonInfo.types = details.types;
-                pokemonInfo.typeMain = details.types[0];
-                pokemonInfo.stats = details.stats;
-                pokemonInfo.imageMove = details.sprites.versions['generation-v']['black-white'].animated.front_default;
-                pokemonInfo.imageDefault = details.sprites.front_default;
-                pokemonInfo.imageBig = details.sprites.other.dream_world.front_default;
-                pokemonInfo.weight = details.weight / 10; // Convert to kg
-                pokemonInfo.height = details.height / 10; // Convert to m
-
+                const pokemonInfo = newPokemon(details);
                  allPokemons = [];
                  allPokemons = allPokemons.concat(pokemonInfo); 
                  pokeCards.innerHTML = pokeCardHtml(pokemonInfo);
@@ -169,4 +164,10 @@ buttonSearch.addEventListener('click',() => {
         
                console.log(pokemonInfo);
             })
+        }
 })
+inputSearch.addEventListener('keydown', (event) => {
+    if (event.key === "Enter") {
+        buttonSearch.click();
+    }
+});

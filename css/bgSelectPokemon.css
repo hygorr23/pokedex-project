@@ -1,0 +1,5 @@
+.headerDetail {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.104) 50%, var(--grass)), url('../assets/fundo1.png') ;
+    background-size: cover;
+    background-position: center;
+}
